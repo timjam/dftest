@@ -1,5 +1,5 @@
 # This is Git's per-user configuration file.
 [user]
 # Please adapt and uncomment the following lines:
-#	name = Timo Mätäsaho
-#	email = timo.matasaho@gmail.com
+	name = Timo Mätäsaho
+	email = timo.matasaho@gmail.com
