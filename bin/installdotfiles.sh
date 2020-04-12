@@ -1,5 +1,5 @@
-DOTFILE_DIR = ../dotfiles
-ORIGINAL_DOTFILES = ~/original_dotfiles
+DOTFILE_DIR="../dotfiles"
+ORIGINAL_DOTFILES="$(HOME)/original_dotfiles"
 
 mkdir -p $ORIGINAL_DOTFILES
 

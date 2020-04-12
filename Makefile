@@ -1,3 +1,4 @@
+DOTFILES_DIR := $(dir $(realpath $(firstword $(MAKEFILE_LIST))))
 PATH := $(DOTFILES_DIR)/bin:$(PATH)
 
 all: packages apps link cleanup
@@ -10,24 +11,22 @@ apps: ohmyzsh vscode
 # Packages
 
 brew:
-  is_executable brew || curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh | bash
+	is_executable brew || curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh | bash
 
 cask: brew
 	brew update
-	brew tap caskroom/cask
-	brew search visual-studio-code
 
 git: brew
-	brew install git git-extras
+	is_executable git || brew install git git-extras
 
 yarn: brew
-  brew install yarn
+	brew install yarn
 
 
 # Apps
 
 ohmyzsh:
-  sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+	sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
 vscode: brew cask
 	brew cask install visual-studio-code
@@ -38,7 +37,7 @@ tmux: brew
 # Link and cleanup
 
 link: apps packages
-  sh installdotfiles.sh
+	sh installdotfiles.sh
 
 cleanup: link
 	brew cleanup
